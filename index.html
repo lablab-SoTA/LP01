@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>LPバリエーション・ポータル</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+   :root{
+    --bg:#0f0a1f;
+    --panel:#1a1236;
+    --accent:#ff2d99;
+    --accent-2:#ffd600;
+    --text:#f5f5ff;
+    --muted:#b5b0d1;
+   }
+   *{box-sizing:border-box;margin:0;padding:0}
+   body{
+    min-height:100vh;
+    background:radial-gradient(circle at top,#1d1144 0%,#0f0a1f 60%);
+    font-family:"Noto Sans JP",sans-serif;
+    color:var(--text);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:32px 20px;
+   }
+   main{
+    width:min(860px,100%);
+    background:var(--panel);
+    border-radius:28px;
+    padding:48px 32px 36px;
+    box-shadow:0 32px 80px rgba(6,0,25,.45);
+    border:1px solid rgba(255,255,255,.09);
+   }
+   header{
+    text-align:center;
+    margin-bottom:40px;
+   }
+   h1{
+    font-size:clamp(2.1rem,4vw,2.8rem);
+    font-weight:800;
+    letter-spacing:.08em;
+    margin-bottom:16px;
+   }
+   p.lead{
+    font-size:1.05rem;
+    color:var(--muted);
+    line-height:1.8;
+   }
+   .grid{
+    display:grid;
+    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+   }
+   a.card{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:28px 20px;
+    border-radius:20px;
+    color:var(--text);
+    text-decoration:none;
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:.06em;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+   }
+   a.card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:linear-gradient(135deg,rgba(255,45,153,.18),rgba(255,214,0,.15));
+    opacity:0;
+    transition:opacity .25s ease;
+   }
+   a.card span{
+    position:relative;
+    z-index:1;
+   }
+   a.card small{
+    display:block;
+    margin-top:10px;
+    font-weight:600;
+    font-size:.85rem;
+    color:var(--muted);
+    letter-spacing:.03em;
+   }
+   a.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 22px 45px rgba(15,0,35,.45);
+    border-color:rgba(255,214,0,.55);
+   }
+   a.card:hover::after{
+    opacity:1;
+   }
+   footer{
+    margin-top:40px;
+    text-align:center;
+    font-size:.85rem;
+    color:rgba(255,255,255,.55);
+   }
+   footer a{
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:600;
+   }
+   @media (max-width:540px){
+    main{padding:40px 24px}
+    .grid{gap:16px}
+    a.card{padding:24px 18px}
+   }
+  </style>
+ </head>
+ <body>
+  <main>
+   <header>
+    <h1>LPバリエーション・ポータル</h1>
+    <p class="lead">下記のボタンから、参考元LPおよびFOMO訴求バリエーション（A/B/C案）を確認できます。</p>
+   </header>
+   <div class="grid">
+    <a class="card" href="reference.html" target="_blank" rel="noopener">
+     <span>リファレンス<br/><small>元LPクローン（診断アンケート）</small></span>
+    </a>
+    <a class="card" href="lp-variant-a.html" target="_blank" rel="noopener">
+     <span>A案｜段階値上げ<br/><small>ステージ制価格でFOMOを訴求</small></span>
+    </a>
+    <a class="card" href="lp-variant-b.html" target="_blank" rel="noopener">
+     <span>B案｜先着特典<br/><small>残枠カウンタと特典で即決促進</small></span>
+    </a>
+    <a class="card" href="lp-variant-c.html" target="_blank" rel="noopener">
+     <span>C案｜72時間ドロップ<br/><small>販売期間限定と視聴期限で締切訴求</small></span>
+    </a>
+   </div>
+   <footer>
+    <p>必要に応じて各LPの文言や数値を実運用値へ差し替えてご活用ください。</p>
+   </footer>
+  </main>
+ </body>
+</html>

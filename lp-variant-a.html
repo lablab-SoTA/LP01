@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+  <meta content="noindex, nofollow" name="robots"/>
+  <title>段階値上げローンチLP（仮）</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+   :root{
+    --pink:#ff2d99;
+    --accent:#ffd600;
+    --text:#111111;
+    --bg:#ffffff;
+    --gray:#f6f6f6;
+    --border:#e2e2e2;
+    --max-width:960px;
+   }
+   *{box-sizing:border-box;margin:0;padding:0}
+   body{
+    font-family:"Noto Sans JP",sans-serif;
+    background-color:#f4f4f8;
+    color:var(--text);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+   }
+   a{text-decoration:none;color:inherit}
+   img{max-width:100%;display:block}
+   .page{
+    margin:0 auto;
+    max-width:var(--max-width);
+    background-color:var(--bg);
+    box-shadow:0 24px 48px rgba(20,17,34,.12);
+    border-radius:24px;
+    overflow:hidden;
+   }
+   header,section,footer{padding:56px 24px}
+   header{
+    background:radial-gradient(circle at top left,rgba(255,45,153,.25),transparent 55%),#161026;
+    color:#fff;
+    position:relative;
+   }
+   header::after{
+    content:"";
+    position:absolute;
+    right:-120px;
+    top:-140px;
+    width:360px;
+    height:360px;
+    background:radial-gradient(circle,rgba(255,214,0,.45),transparent 70%);
+    filter:blur(8px);
+    z-index:0;
+   }
+   header .inner{
+    position:relative;
+    z-index:1;
+    display:grid;
+    gap:32px;
+   }
+   .hero-meta{display:flex;flex-wrap:wrap;gap:16px;font-weight:600}
+   .hero-meta span{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(17,10,32,.65);
+    border:1px solid rgba(255,255,255,.25);
+    font-size:.94rem;
+   }
+   h1{
+    font-size:clamp(2.2rem,4vw,3.4rem);
+    line-height:1.15;
+    font-weight:800;
+    letter-spacing:.04em;
+   }
+   .hero-sub{
+    font-size:1.08rem;
+    font-weight:600;
+    color:#ffe6f3;
+   }
+   .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    align-items:center;
+   }
+   .cta-primary{
+    background:var(--pink);
+    color:#fff;
+    padding:18px 32px;
+    border-radius:16px;
+    font-weight:700;
+    font-size:1.05rem;
+    box-shadow:0 12px 24px rgba(255,45,153,.35);
+    border:none;
+    cursor:pointer;
+    transition:transform .2s ease,box-shadow .2s ease;
+    position:relative;
+    overflow:visible;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+   }
+   .cta-primary:hover{transform:translateY(-2px);box-shadow:0 18px 32px rgba(255,45,153,.45)}
+   .cta-secondary{
+    color:#fff;
+    padding:16px 24px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.45);
+    font-weight:600;
+    background:rgba(255,255,255,.12);
+   }
+   .cta-primary.is-animated{
+    animation:ctaFloat 1.6s ease-in-out infinite;
+   }
+   .cta-primary.is-animated::after{
+    content:"";
+    position:absolute;
+    inset:-6px;
+    border-radius:20px;
+    border:2px solid rgba(255,214,0,.55);
+    opacity:.55;
+    pointer-events:none;
+    animation:ctaPulse 1.6s ease-in-out infinite;
+   }
+   @keyframes ctaFloat{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-6px)}
+    100%{transform:translateY(0)}
+   }
+   @keyframes ctaPulse{
+    0%{transform:scale(.98);opacity:.35}
+    50%{transform:scale(1.05);opacity:.75}
+    100%{transform:scale(.98);opacity:.35}
+   }
+   .countdown-card{
+    display:grid;
+    gap:12px;
+    padding:20px 24px;
+    background:rgba(17,10,32,.65);
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.18);
+    width:min(420px,100%);
+   }
+   .countdown-card h2{
+    font-size:1rem;
+    font-weight:700;
+    color:#ffd6f5;
+    letter-spacing:.1em;
+   }
+   .timer{
+    font-family:"Noto Sans JP",sans-serif;
+    display:flex;
+    gap:12px;
+   }
+   .timer span{
+    background:rgba(255,255,255,.14);
+    padding:12px 16px;
+    border-radius:12px;
+    min-width:74px;
+    text-align:center;
+    font-weight:700;
+    font-size:1.25rem;
+   }
+   .stage-progress{
+    display:grid;
+    gap:10px;
+   }
+   .stage-progress ul{
+    list-style:none;
+    display:grid;
+    gap:8px;
+   }
+   .stage-progress li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 14px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.08);
+    font-weight:600;
+    font-size:.95rem;
+   }
+   .stage-progress li.active{
+    background:rgba(255,45,153,.26);
+    border-color:rgba(255,214,0,.65);
+   }
+   .stage-progress small{
+    font-size:.8rem;
+    color:rgba(255,255,255,.75);
+   }
+   section{background-color:var(--bg)}
+   section + section{border-top:1px solid var(--border)}
+   .section-title{
+    font-size:1.8rem;
+    font-weight:800;
+    margin-bottom:24px;
+    color:var(--pink);
+   }
+   p{margin-bottom:16px;font-size:1.02rem}
+   .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border-radius:999px;
+    padding:8px 14px;
+    background-color:var(--accent);
+    font-weight:700;
+    font-size:.85rem;
+    color:#4c2c00;
+    margin-bottom:12px;
+   }
+   .grid-two{
+    display:grid;
+    gap:32px;
+   }
+   .card{
+    background-color:var(--gray);
+    border-radius:20px;
+    padding:24px;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.03);
+   }
+   .chapters{
+    display:grid;
+    gap:18px;
+   }
+   .chapters li{
+    list-style:none;
+    padding:18px;
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 12px 24px rgba(17,16,32,.06);
+    border:1px solid var(--border);
+   }
+   .chapters strong{display:block;font-weight:700;margin-bottom:6px}
+   .offer-table{
+    width:100%;
+    border-collapse:collapse;
+   }
+   .offer-table th,.offer-table td{
+    padding:16px 18px;
+    border:1px solid var(--border);
+    text-align:left;
+   }
+   .offer-table th{
+    background:var(--gray);
+    font-weight:700;
+   }
+   .reviews{
+    display:grid;
+    gap:16px;
+   }
+   .review-card{
+    border-radius:18px;
+    padding:20px;
+    background:#fff;
+    border:1px solid var(--border);
+    box-shadow:0 16px 32px rgba(17,16,32,.08);
+   }
+   .faq{
+    border-top:1px solid var(--border);
+    margin-top:32px;
+   }
+   .faq-item{
+    border-bottom:1px solid var(--border);
+    padding:18px 0;
+   }
+   .faq-item h3{
+    font-size:1.05rem;
+    font-weight:700;
+    margin-bottom:8px;
+   }
+   .confetti-banner{
+    position:relative;
+    margin:32px auto 0;
+    padding:24px 28px;
+    max-width:680px;
+    text-align:center;
+    background:linear-gradient(135deg,rgba(255,45,153,.18),rgba(255,214,0,.25));
+    border-radius:24px;
+    border:1px solid rgba(255,45,153,.25);
+    box-shadow:0 22px 44px rgba(17,16,32,.12);
+   }
+   .confetti-banner .label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.9rem;
+    font-weight:700;
+    color:var(--pink);
+    background:#fff;
+    border-radius:999px;
+    padding:6px 14px;
+    margin-bottom:12px;
+   }
+   .confetti-banner strong{
+    display:block;
+    font-size:1.6rem;
+    letter-spacing:.06em;
+    color:#361145;
+   }
+   footer{
+    background:#161026;
+    color:rgba(255,255,255,.75);
+    font-size:.85rem;
+    line-height:1.5;
+   }
+   footer a{color:rgba(255,255,255,.85)}
+   .sticky-cta{
+    position:fixed;
+    inset:auto 0 0 0;
+    background:#fff;
+    border-top:2px solid var(--pink);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 18px;
+    gap:12px;
+    box-shadow:0 -12px 24px rgba(17,16,32,.12);
+    z-index:20;
+   }
+   .sticky-cta .cta-primary{
+    flex:1;
+    background:var(--pink);
+    color:#fff;
+    border:none;
+    font-weight:700;
+    padding:14px;
+    border-radius:12px;
+    font-size:1rem;
+    box-shadow:0 8px 18px rgba(255,45,153,.35);
+    cursor:pointer;
+   }
+   .sticky-cta .meta{
+    display:flex;
+    flex-direction:column;
+    font-size:.85rem;
+    gap:4px;
+    min-width:140px;
+   }
+   @media (min-width:768px){
+    .hero-layout{
+     display:grid;
+     grid-template-columns:repeat(2,minmax(0,1fr));
+     gap:40px;
+     align-items:center;
+    }
+    .grid-two{
+     grid-template-columns:repeat(2,minmax(0,1fr));
+     align-items:start;
+    }
+    .sticky-cta{display:none}
+   }
+   @media (max-width:767px){
+    header,section,footer{padding:48px 20px}
+    .countdown-card{width:100%}
+    .hero-actions{flex-direction:column;align-items:stretch}
+    .cta-primary,.cta-secondary{width:100%;text-align:center}
+    .confetti-banner{margin:32px 0 0;padding:20px 18px}
+   }
+   @media (prefers-reduced-motion: reduce){
+    .cta-primary.is-animated{animation:none}
+    .cta-primary.is-animated::after{animation:none;opacity:.4}
+   }
+  </style>
+  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+ </head>
+ <body data-variant="A">
+  <div class="page" data-price-stage="stage1">
+   <header>
+    <div class="inner hero-layout">
+     <div>
+      <div class="hero-meta">
+       <span>60分スペシャル</span>
+       <span>スマホ＆DL対応</span>
+       <span>技術サポートあり</span>
+      </div>
+      <h1>いまが最安。笑ってスカッと、60分。</h1>
+      <p class="hero-sub">11月5日(水)12:00ローンチ。スマホで今すぐ、ダウンロードもOK。2,480円は11/09(日)23:59まで。</p>
+      <div class="hero-actions">
+       <a class="cta-primary is-animated" data-event="cta_click_primary" data-section="hero" data-variant="A" data-fomo-state="stage1" href="https://www.xfans.tokyo/nanpa__tokyo" rel="noopener" target="_blank">今すぐ視聴サイトへ</a>
+       <a class="cta-secondary" data-event="cta_click_secondary" data-section="hero" data-variant="A" href="#offer">価格と内容を見る</a>
+      </div>
+     </div>
+     <div class="countdown-card" aria-live="polite">
+      <h2>次の値上げまで</h2>
+      <div class="timer" id="timer">
+       <span><strong id="days">00</strong><br/>日</span>
+       <span><strong id="hours">00</strong><br/>時間</span>
+       <span><strong id="minutes">00</strong><br/>分</span>
+       <span><strong id="seconds">00</strong><br/>秒</span>
+      </div>
+      <div class="stage-progress">
+       <ul id="stageList">
+        <li data-stage="stage1"><span>ステージ1｜〜11/09 23:59 JST</span><small>現在価格 2,480円</small></li>
+        <li data-stage="stage2"><span>ステージ2｜〜11/12 23:59 JST</span><small>次回価格 2,980円</small></li>
+        <li data-stage="stage3"><span>ステージ3｜11/13 00:00〜</span><small>最終価格 3,280円</small></li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </header>
+   <div class="confetti-banner js-confetti">
+    <span class="label">ステージ1限定｜11/09(日)23:59まで</span>
+    <strong>＼特別プランへご招待🎉／</strong>
+   </div>
+   <section id="benefit">
+    <div class="pill">爆笑で元気が湧く60分</div>
+    <h2 class="section-title">日常のモヤ、11月のうちにリセット。</h2>
+    <div class="grid-two">
+      <div>
+       <p>仕事も私生活も予定が詰まって、気がつけば気分は下降線。たまには頭を空っぽにして笑いたい。でも、長尺配信に時間を取られたくはない。</p>
+       <p>この単発動画は、通勤や寝る前にぴったりな60分構成。テンポ良く畳みかけるネタとミニドラマで、スカッとしたいタイミングにぴたりとハマります。</p>
+      </div>
+      <div class="card">
+       <strong>solution</strong>
+       <p>いつでもスマホで視聴。ダウンロードすれば地下鉄でもOK。ステージ1の今は、最安の2,480円。11/10からは+500円、さらに数日で+800円になります。</p>
+      </div>
+    </div>
+   </section>
+   <section id="chapters">
+    <h2 class="section-title">チャプター &amp; ティザー</h2>
+    <ul class="chapters">
+     <li>
+      <strong>CHAPTER 1｜発射15秒で爆笑</strong>
+      <p>オープニングは怒涛のショートコント。導入で視聴者の心を掴む編集が自慢です。</p>
+     </li>
+     <li>
+      <strong>CHAPTER 3｜もしも◯◯が営業に来たら</strong>
+      <p>人気シリーズ最新作。ゲスト芸人との掛け合いがツボに刺さると社内で話題。</p>
+     </li>
+     <li>
+      <strong>ティザー動画（15秒）</strong>
+      <p>トレーラーはクリック再生。自動再生はありません。▶ 予告を見る</p>
+     </li>
+    </ul>
+   </section>
+   <section id="offer">
+    <h2 class="section-title">価格とオファー比較</h2>
+    <table class="offer-table">
+     <tbody>
+      <tr>
+       <th>現在価格</th>
+       <td>2,480円（税込）｜11/09(日)23:59 JSTまで</td>
+      </tr>
+      <tr>
+       <th>次回価格</th>
+       <td>2,980円（税込）｜11/12(木)23:59 JSTまで</td>
+      </tr>
+      <tr>
+       <th>最終価格</th>
+       <td>3,280円（税込）｜11/13(金)00:00 JST以降</td>
+      </tr>
+      <tr>
+       <th>視聴方法</th>
+       <td>自社プラットフォーム（ストリーミング／ダウンロード）｜技術サポート24h以内</td>
+      </tr>
+      <tr>
+       <th>対応デバイス</th>
+       <td>スマホ・タブレット・PC／同時視聴2台まで</td>
+      </tr>
+      <tr>
+       <th>決済手段</th>
+       <td>クレジット／デビット／各種ウォレット。視聴サイトでの登録〜決済完了まで約2分。</td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+   <section id="reviews">
+    <h2 class="section-title">レビュー &amp; SNS実績</h2>
+    <div class="reviews">
+     <div class="review-card">
+      <strong>★4.6 / 128件（仮）</strong>
+      <p>視聴者の声：「テンポが良くて通勤30分で半分見終えられる」「月曜朝のブルーが消えた」など。</p>
+     </div>
+     <div class="review-card">
+      <strong>SNS総再生 210万回（仮）</strong>
+      <p>ローンチ告知のハッシュタグがTikTokとXで合計210万回再生（10/15時点）。</p>
+     </div>
+     <div class="review-card">
+      <strong>技術サポート</strong>
+      <p>視聴トラブルはメールで24h以内に回答。返金保証はありませんが、再生不可時は個別対応します。</p>
+     </div>
+    </div>
+   </section>
+   <section id="faq">
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq">
+     <div class="faq-item">
+      <h3>視聴までどのくらい時間がかかりますか？</h3>
+      <p>会員登録・決済を含めておよそ2分です。完了後すぐに視聴URLが有効になります。</p>
+     </div>
+     <div class="faq-item">
+      <h3>ダウンロードは何台まで可能ですか？</h3>
+      <p>最大2台まで。30日間いつでも再ダウンロード可能です。</p>
+     </div>
+     <div class="faq-item">
+      <h3>価格は本当に上がりますか？</h3>
+      <p>はい。11/10 00:00 JSTに2,980円、11/13 00:00 JSTに3,280円へ自動切り替え予定です。</p>
+     </div>
+     <div class="faq-item">
+      <h3>返金はできますか？</h3>
+      <p>返金保証はありません。再生不可など技術的な問題があればサポートが対応します。</p>
+     </div>
+    </div>
+   </section>
+   <section id="final-cta">
+    <h2 class="section-title">ステージ1は11/09(日)23:59まで</h2>
+    <p>価格が上がる前に、視聴サイトで登録を済ませましょう。視聴開始までは約2分です。</p>
+    <div class="hero-actions">
+     <a class="cta-primary is-animated" data-event="cta_click_primary" data-section="bottom" data-variant="A" data-fomo-state="stage1" href="https://www.xfans.tokyo/nanpa__tokyo" rel="noopener" target="_blank">今すぐ視聴サイトへ</a>
+     <a class="cta-secondary" data-event="cta_click_secondary" data-section="bottom" data-variant="A" href="https://www.xfans.tokyo/nanpa__tokyo" rel="noopener" target="_blank">視聴ページに進む</a>
+    </div>
+   </section>
+   <footer>
+    <p>© 2025 Example Studio. 価格・視聴条件は予告なく変更となる場合があります。視聴規約・著作権・二次配布禁止の条項を必ずご確認ください。</p>
+    <p>ローンチ：2025/11/05 12:00 JST｜価格改定：2025/11/10 00:00、2025/11/13 00:00 JST予定。</p>
+   </footer>
+  </div>
+  <div class="sticky-cta" data-variant="A">
+   <div class="meta">
+    <span id="stickyPrice">現在価格 2,480円</span>
+    <span id="stickyNext">次は 2,980円（11/09 23:59まで）</span>
+   </div>
+   <a class="cta-primary is-animated" data-event="cta_click_primary" data-section="sticky" data-variant="A" data-fomo-state="stage1" href="https://www.xfans.tokyo/nanpa__tokyo" rel="noopener" target="_blank">今すぐ視聴サイトへ</a>
+  </div>
+  <script>
+   const stageData=[
+    {id:"stage1",label:"ステージ1",price:2480,end:"2025-11-09T23:59:59+09:00"},
+    {id:"stage2",label:"ステージ2",price:2980,end:"2025-11-12T23:59:59+09:00"},
+    {id:"stage3",label:"ステージ3",price:3280,end:null}
+   ];
+   const timerEls={
+    days:document.getElementById("days"),
+    hours:document.getElementById("hours"),
+    minutes:document.getElementById("minutes"),
+    seconds:document.getElementById("seconds")
+   };
+   const stageList=document.getElementById("stageList");
+   const page=document.querySelector(".page");
+   const stickyPrice=document.getElementById("stickyPrice");
+   const stickyNext=document.getElementById("stickyNext");
+   function parseISOWithTZ(str){return str?new Date(str):null;}
+   function updateUI(){
+    const now=new Date();
+    let currentStage=stageData[stageData.length-1];
+    for(const stage of stageData){
+     const end=parseISOWithTZ(stage.end);
+     if(!end||now<=end){currentStage=stage;break;}
+    }
+    stageList.querySelectorAll("li").forEach(li=>{
+     const active=li.dataset.stage===currentStage.id;
+     li.classList.toggle("active",active);
+    });
+    page.dataset.priceStage=currentStage.id;
+    document.querySelectorAll("[data-fomo-state]").forEach(el=>{el.dataset.fomoState=currentStage.id;});
+    stickyPrice.textContent=`現在価格 ${currentStage.price.toLocaleString()}円`;
+    const currentIndex=stageData.findIndex(stage=>stage.id===currentStage.id);
+    const nextStage=stageData[currentIndex+1];
+    if(nextStage){
+     const nextEnd=parseISOWithTZ(currentStage.end);
+     if(nextEnd){
+      const nextDate=new Intl.DateTimeFormat("ja-JP",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false,timeZone:"Asia/Tokyo"}).format(nextEnd);
+      stickyNext.textContent=`次は ${nextStage.price.toLocaleString()}円（${nextDate}まで）`;
+     }
+    }else{
+     stickyNext.textContent="最終価格で販売中";
+    }
+    const target=parseISOWithTZ(currentStage.end);
+    if(!target){
+     timerEls.days.textContent="00";
+     timerEls.hours.textContent="00";
+     timerEls.minutes.textContent="00";
+     timerEls.seconds.textContent="00";
+     return;
+    }
+    const diff=target-now;
+    if(diff<=0){
+     timerEls.days.textContent="00";
+     timerEls.hours.textContent="00";
+     timerEls.minutes.textContent="00";
+     timerEls.seconds.textContent="00";
+     return;
+    }
+    const totalSeconds=Math.floor(diff/1000);
+    const days=Math.floor(totalSeconds/86400);
+    const hours=Math.floor((totalSeconds%86400)/3600);
+    const minutes=Math.floor((totalSeconds%3600)/60);
+   const seconds=totalSeconds%60;
+   timerEls.days.textContent=String(days).padStart(2,"0");
+   timerEls.hours.textContent=String(hours).padStart(2,"0");
+   timerEls.minutes.textContent=String(minutes).padStart(2,"0");
+   timerEls.seconds.textContent=String(seconds).padStart(2,"0");
+  }
+  updateUI();
+  setInterval(updateUI,1000);
+ </script>
+  <script>
+   document.addEventListener("DOMContentLoaded",()=>{
+    const prefersReduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(prefersReduced){return;}
+    const fireConfetti=()=>{
+     if(typeof confetti!=="function"){return;}
+     const defaults={particleCount:120,spread:70,startVelocity:45,gravity:.7,scalar:.9};
+     confetti({...defaults,origin:{x:0.15,y:0.7}});
+     confetti({...defaults,origin:{x:0.5,y:0.6}});
+     confetti({...defaults,origin:{x:0.85,y:0.7}});
+    };
+    const observer=new IntersectionObserver((entries,obs)=>{
+     entries.forEach(entry=>{
+      if(entry.isIntersecting){
+       fireConfetti();
+       obs.unobserve(entry.target);
+      }
+     });
+    },{threshold:0.6});
+    document.querySelectorAll(".js-confetti").forEach(target=>observer.observe(target));
+    document.querySelectorAll(".cta-primary").forEach(btn=>{
+     btn.addEventListener("click",fireConfetti);
+    });
+   });
+  </script>
+ </body>
+</html>

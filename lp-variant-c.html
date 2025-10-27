@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+  <meta content="noindex, nofollow" name="robots"/>
+  <title>72時間ドロップLP（仮）</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+   :root{
+    --pink:#ff2d99;
+    --accent:#ffd600;
+    --text:#111111;
+    --bg:#0f041c;
+    --surface:#1d0d32;
+    --max-width:960px;
+   }
+   *{box-sizing:border-box;margin:0;padding:0}
+   body{
+    font-family:"Noto Sans JP",sans-serif;
+    background:radial-gradient(circle at top,#37124f,#0f041c 60%);
+    color:#fff;
+    line-height:1.7;
+   }
+   a{text-decoration:none;color:inherit}
+   header,section,footer{padding:56px 24px}
+   .page{
+    max-width:var(--max-width);
+    margin:0 auto;
+    background:var(--surface);
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 32px 64px rgba(0,0,0,.35);
+    position:relative;
+   }
+   header{position:relative;background:linear-gradient(135deg,#2f0c41 0%,#ff2d99 65%,#ffd600 100%);}
+   header::after{
+    content:"";
+    position:absolute;
+    inset:auto auto -120px -160px;
+    width:360px;
+    height:360px;
+    background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%);
+    opacity:.6;
+   }
+   header .inner{
+    position:relative;
+    z-index:1;
+    display:grid;
+    gap:32px;
+   }
+   .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    font-weight:600;
+   }
+   .hero-meta span{
+    padding:8px 16px;
+    border-radius:999px;
+    background:rgba(17,4,28,.5);
+    border:1px solid rgba(255,255,255,.35);
+   }
+   h1{
+    font-size:clamp(2.3rem,4vw,3.7rem);
+    font-weight:800;
+    letter-spacing:.04em;
+   }
+   .hero-sub{
+    font-size:1.08rem;
+    font-weight:600;
+    color:#fff7fb;
+   }
+   .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    align-items:center;
+   }
+   .cta-primary{
+    background:#fff;
+    color:#190229;
+    padding:18px 32px;
+    border-radius:16px;
+    font-weight:800;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+    position:relative;
+    overflow:visible;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+   }
+   .cta-secondary{
+    color:#fff;
+    padding:16px 24px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.45);
+    font-weight:600;
+    background:rgba(0,0,0,.2);
+   }
+   .cta-primary.is-animated{
+    animation:ctaFloat 1.7s ease-in-out infinite;
+   }
+   .cta-primary.is-animated::after{
+    content:"";
+    position:absolute;
+    inset:-8px;
+    border-radius:22px;
+    border:2px solid rgba(255,214,0,.55);
+    opacity:.55;
+    pointer-events:none;
+    animation:ctaPulse 1.7s ease-in-out infinite;
+   }
+   @keyframes ctaFloat{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+    100%{transform:translateY(0)}
+   }
+   @keyframes ctaPulse{
+    0%{transform:scale(.97);opacity:.35}
+    50%{transform:scale(1.05);opacity:.75}
+    100%{transform:scale(.97);opacity:.35}
+   }
+   .timer-card{
+    background:rgba(8,0,18,.65);
+    border-radius:24px;
+    padding:28px;
+    border:1px solid rgba(255,255,255,.18);
+    display:grid;
+    gap:20px;
+    max-width:420px;
+   }
+   .time-grid{
+    display:flex;
+    gap:12px;
+   }
+   .time-grid span{
+    background:rgba(255,255,255,.12);
+    padding:14px 18px;
+    border-radius:12px;
+    min-width:82px;
+    text-align:center;
+    font-weight:800;
+    font-size:1.4rem;
+    letter-spacing:.08em;
+   }
+   .time-grid small{
+    display:block;
+    font-size:.8rem;
+    font-weight:700;
+    color:rgba(255,255,255,.75);
+    margin-top:6px;
+   }
+   section{background:var(--surface);color:#fff}
+   section + section{border-top:1px solid rgba(255,255,255,.12)}
+   .section-title{
+    font-size:1.8rem;
+    font-weight:800;
+    margin-bottom:24px;
+    color:var(--accent);
+   }
+   p{margin-bottom:16px;font-size:1.02rem;color:rgba(255,255,255,.88)}
+   .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:rgba(255,214,0,.85);
+    color:#2d1a00;
+    font-weight:700;
+    margin-bottom:12px;
+   }
+   .grid-two{
+    display:grid;
+    gap:32px;
+   }
+   .card{
+    background:rgba(255,255,255,.06);
+    border-radius:20px;
+    padding:24px;
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 16px 32px rgba(0,0,0,.16);
+   }
+   .chapters{
+    display:grid;
+    gap:18px;
+   }
+   .chapters li{
+    list-style:none;
+    padding:18px;
+    border-radius:16px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
+   }
+   .chapters strong{display:block;font-weight:700;margin-bottom:6px}
+   .offer-table{
+    width:100%;
+    border-collapse:collapse;
+   }
+   .offer-table th,.offer-table td{
+    border:1px solid rgba(255,255,255,.12);
+    padding:16px 18px;
+   }
+   .offer-table th{
+    background:rgba(255,255,255,.08);
+    text-align:left;
+    font-weight:700;
+   }
+   .reviews{
+    display:grid;
+    gap:18px;
+   }
+   .review-card{
+    border-radius:18px;
+    padding:22px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+   }
+   .faq-item{
+    border-top:1px solid rgba(255,255,255,.12);
+    padding:18px 0;
+   }
+   .faq-item:first-child{border-top:none}
+   .faq-item h3{
+    font-size:1.05rem;
+    font-weight:700;
+    margin-bottom:8px;
+   }
+   .confetti-banner{
+    position:relative;
+    margin:32px auto 0;
+    max-width:680px;
+    padding:26px 30px;
+    text-align:center;
+    background:linear-gradient(135deg,rgba(255,45,153,.22),rgba(255,214,0,.28));
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 28px 56px rgba(0,0,0,.28);
+   }
+   .confetti-banner .label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.92rem;
+    font-weight:700;
+    color:#ffecfe;
+    background:rgba(8,0,18,.7);
+    border-radius:999px;
+    padding:6px 16px;
+    margin-bottom:12px;
+   }
+   .confetti-banner strong{
+    display:block;
+    font-size:1.7rem;
+    letter-spacing:.08em;
+    color:#fff;
+   }
+   footer{
+    background:#080012;
+    color:rgba(255,255,255,.78);
+    font-size:.85rem;
+   }
+   .sticky-cta{
+    position:fixed;
+    inset:auto 0 0 0;
+    background:#1b042d;
+    border-top:2px solid var(--pink);
+    padding:16px 18px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    z-index:40;
+    box-shadow:0 -18px 42px rgba(0,0,0,.45);
+   }
+   .sticky-cta .cta-primary{
+    flex:1;
+    background:#fff;
+    color:#1a022a;
+    border:none;
+    font-weight:700;
+    padding:14px;
+    border-radius:12px;
+    cursor:pointer;
+   }
+   .sticky-cta .meta{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    font-size:.85rem;
+    min-width:160px;
+   }
+   .closed-banner{
+    background:#32051b;
+    padding:18px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.18);
+    margin-top:24px;
+    display:none;
+   }
+   @media (min-width:768px){
+    .hero-layout{
+     display:grid;
+     grid-template-columns:repeat(2,minmax(0,1fr));
+     gap:40px;
+     align-items:center;
+    }
+    .grid-two{
+     grid-template-columns:repeat(2,minmax(0,1fr));
+     align-items:start;
+    }
+    .sticky-cta{display:none}
+   }
+  @media (max-width:767px){
+   header,section,footer{padding:48px 20px}
+   .hero-actions{flex-direction:column;align-items:stretch}
+   .cta-primary,.cta-secondary{width:100%;text-align:center}
+    .time-grid{flex-wrap:wrap}
+    .time-grid span{flex:1}
+    .confetti-banner{margin:32px 0 0;padding:22px 20px}
+   }
+   @media (prefers-reduced-motion: reduce){
+    .cta-primary.is-animated{animation:none}
+    .cta-primary.is-animated::after{animation:none;opacity:.45}
+   }
+  </style>
+  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+ </head>
+ <body data-variant="C">
+  <div class="page" data-drop-state="open">
+   <header>
+    <div class="inner hero-layout">
+     <div>
+      <div class="hero-meta">
+       <span>販売期間：11/05 12:00 ▶ 11/08 11:59</span>
+       <span>視聴権：購入後30日</span>
+       <span>技術サポートあり</span>
+      </div>
+      <h1>72時間だけ。次回、未定。</h1>
+      <p class="hero-sub">2,480円（税込）。購入後30日間、ストリーミングもダウンロードもOK。販売窓を逃すと入手不可です。</p>
+      <div class="hero-actions">
+       <a class="cta-primary is-animated" data-event="cta_click_primary" data-section="hero" data-variant="C" data-fomo-state="open" href="https://www.xfans.tokyo/nanpa__tokyo" rel="noopener" target="_blank">72時間内に視聴サイトへ</a>
+       <a class="cta-secondary" data-event="cta_click_secondary" data-section="hero" data-variant="C" href="#offer">販売条件を見る</a>
+      </div>
+     </div>
+     <div class="timer-card" aria-live="polite">
+      <h2 style="font-weight:700;font-size:1rem;letter-spacing:.12em;color:#ffdcee;">販売終了まで</h2>
+      <div class="time-grid">
+       <span><strong id="dd">00</strong><small>日</small></span>
+       <span><strong id="hh">00</strong><small>時間</small></span>
+       <span><strong id="mm">00</strong><small>分</small></span>
+       <span><strong id="ss">00</strong><small>秒</small></span>
+      </div>
+      <p>終了と同時に購入リンクはクローズします。終了後は再販待ちフォームを表示予定です。</p>
+     </div>
+    </div>
+   </header>
+   <div class="confetti-banner js-confetti">
+    <span class="label">販売終了までカウントダウン中</span>
+    <strong>＼72時間限定ドロップ開催中🎉／</strong>
+   </div>
+   <section id="problem">
+    <div class="pill">週末を一撃アガる60分</div>
+    <h2 class="section-title">週末の「時間がない」悩みを解決。</h2>
+    <div class="grid-two">
+     <div>
+      <p>休日でも予定がパンパン。ストレスは溜まるけど長尺ドラマを完走する余裕はない。そんな男性のために作った、テンポのいいバラエティです。</p>
+      <p>ネタ×ドラマ×仕掛け映像をミックスし、1章あたり平均8分で完結。移動中や休憩時間でも楽しめます。</p>
+     </div>
+     <div class="card">
+      <strong>solution</strong>
+      <p>11/05正午に公開し、72時間で販売を終了します。購入後30日間はいつでも視聴&ダウンロード可能。視聴不可時は技術サポートが対応。</p>
+     </div>
+    </div>
+   </section>
+   <section id="content">
+    <h2 class="section-title">中身を少しだけ公開</h2>
+    <div class="grid-two">
+     <ul class="chapters">
+      <li>
+       <strong>CHAPTER 2｜もしも◯◯が上司だったら</strong>
+       <p>ネオンライト演出で映えるセット。心理的な「刺さり」を狙った構成です。</p>
+      </li>
+      <li>
+       <strong>CHAPTER 4｜週末アガるサプライズロケ</strong>
+       <p>テンポの良いロケ企画。終盤の仕掛けでSNSバズを狙います。</p>
+      </li>
+      <li>
+       <strong>ティザー(15秒)｜クリック再生</strong>
+       <p>自動再生しない設計で、広告からの遷移でも無理なく視聴開始。</p>
+      </li>
+     </ul>
+     <div class="card">
+      <h3>仕様まとめ</h3>
+      <p>・本編 60分｜フルHD配信｜スマホ・PC・タブレット対応<br/>・視聴権 30日間（購入時刻から自動計測）<br/>・ダウンロード2台まで｜同時視聴2台</p>
+     </div>
+    </div>
+   </section>
+   <section id="offer">
+    <h2 class="section-title">販売条件</h2>
+    <table class="offer-table">
+     <tbody>
+      <tr>
+       <th>販売期間</th>
+       <td>2025/11/05 12:00〜2025/11/08 11:59 JST（延長なし）</td>
+      </tr>
+      <tr>
+       <th>価格</th>
+       <td>2,480円（税込）｜追加課金なし</td>
+      </tr>
+      <tr>
+       <th>視聴ライセンス</th>
+       <td>購入時刻から30日間｜マイページで残日数を表示</td>
+      </tr>
+      <tr>
+       <th>送客先</th>
+       <td>https://next.example.com/video/abcd｜所要時間 約2分（会員登録＋決済＋年齢確認）</td>
+      </tr>
+      <tr>
+       <th>対応決済</th>
+       <td>クレジット／デビット／ウォレット。技術サポートはメールで24h以内回答。</td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+   <section id="social">
+    <h2 class="section-title">社会的証明（仮）</h2>
+    <div class="reviews">
+     <div class="review-card">
+      <strong>★4.6 / 128件</strong>
+      <p>「締切に背中を押されて即決したけど大正解」「30日間の視聴制限がいい緊張感」といったレビューを掲載予定。</p>
+     </div>
+     <div class="review-card">
+      <strong>SNS総再生 210万回</strong>
+      <p>ローンチ告知クリエイティブの再生数（10/15時点仮値）。ハッシュタグキャンペーンも同時実施。</p>
+     </div>
+    </div>
+   </section>
+   <section id="faq">
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq-item">
+     <h3>販売期間が過ぎたらどうなりますか？</h3>
+     <p>購入ボタンが自動的に停止し、再販待ちフォームを表示します。次回再販は未定です。</p>
+    </div>
+    <div class="faq-item">
+     <h3>視聴期限のカウント方法は？</h3>
+     <p>決済完了時刻を起点に30日後の同時刻まで視聴できます。残り日数はマイページに表示されます。</p>
+    </div>
+    <div class="faq-item">
+     <h3>返金できますか？</h3>
+     <p>返金保証はありませんが、再生不可など技術的問題にはメールで対応します。</p>
+    </div>
+   </section>
+   <section id="final">
+    <h2 class="section-title">72時間を逃すと視聴不可</h2>
+    <p>次回の販売は未定です。視聴サイトへの登録・決済は約2分で完了します。今のうちにアクセスしてください。</p>
+    <div class="hero-actions">
+     <a class="cta-primary is-animated" data-event="cta_click_primary" data-section="bottom" data-variant="C" data-fomo-state="open" href="https://www.xfans.tokyo/nanpa__tokyo" rel="noopener" target="_blank">72時間内に視聴サイトへ</a>
+     <a class="cta-secondary" data-event="cta_click_secondary" data-section="bottom" data-variant="C" href="https://www.xfans.tokyo/nanpa__tokyo" rel="noopener" target="_blank">視聴ページに進む</a>
+    </div>
+    <div class="closed-banner" id="closedBanner">
+     <strong>販売は終了しました。</strong>
+     <p>再販待ちリストに登録したい場合は、メールアドレスをフォームで送信してください。</p>
+    </div>
+   </section>
+   <footer>
+    <p>© 2025 Example Studio. 価格・販売期間・視聴条件は予告なく変更となる場合があります。視聴規約・著作権・二次配布禁止を明記しています。</p>
+    <p>ローンチ：2025/11/05 12:00 JST｜販売終了：2025/11/08 11:59 JST｜視聴期限：購入後30日。</p>
+   </footer>
+  </div>
+  <div class="sticky-cta" data-variant="C">
+   <div class="meta">
+    <span id="stickyTimer">終了まで 72:00:00</span>
+    <span>購入後30日視聴｜返金なし・技術サポート明記</span>
+   </div>
+   <a class="cta-primary is-animated" data-event="cta_click_primary" data-section="sticky" data-variant="C" data-fomo-state="open" href="https://www.xfans.tokyo/nanpa__tokyo" rel="noopener" target="_blank">72時間内に視聴サイトへ</a>
+  </div>
+  <script>
+   const WINDOW_END="2025-11-08T11:59:00+09:00";
+   const WINDOW_START="2025-11-05T12:00:00+09:00";
+   const timer={
+    dd:document.getElementById("dd"),
+    hh:document.getElementById("hh"),
+    mm:document.getElementById("mm"),
+    ss:document.getElementById("ss"),
+    sticky:document.getElementById("stickyTimer"),
+    banner:document.getElementById("closedBanner"),
+    page:document.querySelector(".page"),
+    ctas:document.querySelectorAll("[data-fomo-state]")
+   };
+   function formatHMS(totalSeconds){
+    const h=Math.floor(totalSeconds/3600);
+    const m=Math.floor((totalSeconds%3600)/60);
+    const s=totalSeconds%60;
+    return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+   }
+   function updateCountdown(){
+    const now=new Date();
+    const start=new Date(WINDOW_START);
+    const end=new Date(WINDOW_END);
+    if(now<start){
+     const diff=Math.floor((start-now)/1000);
+     timer.dd.textContent=String(Math.floor(diff/86400)).padStart(2,"0");
+     timer.hh.textContent=String(Math.floor((diff%86400)/3600)).padStart(2,"0");
+     timer.mm.textContent=String(Math.floor((diff%3600)/60)).padStart(2,"0");
+     timer.ss.textContent=String(diff%60).padStart(2,"0");
+     timer.sticky.textContent=`開始まで ${formatHMS(diff)}`;
+     timer.page.dataset.dropState="pre";
+     timer.ctas.forEach(btn=>btn.dataset.fomoState="pre");
+     timer.banner.style.display="none";
+     return;
+    }
+    const diff=Math.floor((end-now)/1000);
+    if(diff<=0){
+     timer.dd.textContent="00";
+     timer.hh.textContent="00";
+     timer.mm.textContent="00";
+     timer.ss.textContent="00";
+     timer.sticky.textContent="販売は終了しました";
+     timer.page.dataset.dropState="closed";
+     timer.ctas.forEach(btn=>btn.dataset.fomoState="closed");
+     timer.banner.style.display="block";
+     return;
+    }
+    const days=Math.floor(diff/86400);
+    const hours=Math.floor((diff%86400)/3600);
+    const minutes=Math.floor((diff%3600)/60);
+    const seconds=diff%60;
+    timer.dd.textContent=String(days).padStart(2,"0");
+    timer.hh.textContent=String(hours).padStart(2,"0");
+    timer.mm.textContent=String(minutes).padStart(2,"0");
+    timer.ss.textContent=String(seconds).padStart(2,"0");
+    timer.sticky.textContent=`終了まで ${formatHMS(diff)}`;
+    timer.page.dataset.dropState="open";
+    timer.ctas.forEach(btn=>btn.dataset.fomoState="open");
+   timer.banner.style.display="none";
+  }
+  updateCountdown();
+  setInterval(updateCountdown,1000);
+ </script>
+  <script>
+   document.addEventListener("DOMContentLoaded",()=>{
+    const prefersReduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(prefersReduced){return;}
+    const fireConfetti=()=>{
+     if(typeof confetti!=="function"){return;}
+     const base={particleCount:160,spread:90,startVelocity:48,scalar:1,gravity:.6};
+     confetti({...base,origin:{x:0.15,y:0.75}});
+     confetti({...base,origin:{x:0.5,y:0.55}});
+     confetti({...base,origin:{x:0.85,y:0.75}});
+    };
+    const observer=new IntersectionObserver((entries,obs)=>{
+     entries.forEach(entry=>{
+      if(entry.isIntersecting){
+       fireConfetti();
+       obs.unobserve(entry.target);
+      }
+     });
+    },{threshold:0.5});
+    document.querySelectorAll(".js-confetti").forEach(el=>observer.observe(el));
+    document.querySelectorAll(".cta-primary").forEach(btn=>{
+     btn.addEventListener("click",fireConfetti);
+    });
+   });
+  </script>
+ </body>
+</html>
