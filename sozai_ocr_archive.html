@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ナンパtokyo Story Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+        <style>
+    :root { color-scheme: light; }
+    html {
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'YuGothic', Meiryo, sans-serif;
+      background: #ffffff;
+    }
+    body {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #1e2732;
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 48px 18px 80px;
+    }
+    main {
+      width: min(100%, 860px);
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid #e3e8ee;
+      box-shadow: 0 32px 90px rgba(30, 40, 60, 0.08);
+      padding: clamp(28px, 4vw, 56px);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(22px, 4vw, 36px);
+    }
+    section.story-list {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(18px, 3vw, 26px);
+    }
+    .story-block {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: clamp(18px, 3vw, 26px);
+      border-radius: 18px;
+      border: 1px solid #e3e8ee;
+      background: #f8fbff;
+    }
+    .story-block:nth-of-type(even) {
+      background: #ffffff;
+      border-color: #d8e2ef;
+    }
+    .story-block img {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid #d9e4f2;
+      box-shadow: 0 10px 24px rgba(22, 36, 64, 0.08);
+    }
+    .story-block p {
+      margin: 0;
+    }
+    .story-text {
+      display: block;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .story-text.sub {
+      font-size: 15px;
+      font-weight: 500;
+      color: #5d6878;
+    }
+    .story-text.big {
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+    .highlight-yellow {
+      color: #c77800;
+      font-weight: 700;
+    }
+    .highlight-red {
+      color: #d13c3c;
+      font-weight: 700;
+    }
+    .story-block.lead {
+      background: linear-gradient(135deg, #ffffff 0%, #edf4ff 100%);
+      border: 1px solid #d4e2ff;
+      align-items: center;
+      text-align: center;
+    }
+    .story-block.lead img {
+      max-width: 320px;
+      border-radius: 20px;
+    }
+    .story-block.no-image {
+      align-items: center;
+      text-align: center;
+    }
+    .cta-buttons {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 380px;
+    }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #ffffff;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+    .cta-button.primary {
+      background: linear-gradient(130deg, #ffb347 0%, #ff8c42 100%);
+      box-shadow: 0 18px 40px rgba(255, 140, 66, 0.3);
+    }
+    .cta-button.line {
+      background: linear-gradient(130deg, #00b756 0%, #00da74 100%);
+      box-shadow: 0 18px 40px rgba(0, 182, 86, 0.28);
+    }
+    .cta-button:hover {
+      transform: translateY(-2px);
+    }
+    .viewer-feedback {
+      width: 100%;
+      color: #4c596a;
+      text-align: left;
+    }
+    .viewer-feedback h3 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #8391a4;
+    }
+    .viewer-feedback ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .viewer-feedback .bubble {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #f3f7fb;
+      border: 1px solid #dbe3ef;
+    }
+    @media (max-width: 640px) {
+      body { padding: 32px 12px 52px; }
+      main { border-radius: 18px; }
+      .story-block { padding: 18px 16px 20px; }
+      .story-block.lead img { max-width: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="story-list">
+      <article class="story-block lead">
+        <img src="https://via.placeholder.com/640x360/1e1d3b/ffffff?text=Nanpa+Tokyo" alt="">
+        <p><span class="story-text big highlight-yellow">ナンパtokyoとは？</span></p>
+        <p><span class="story-text sub">数多くのワンナイトを調査する今回の企画。</span></p>
+        <p><span class="story-text sub">渋谷で東京ガールのリアルな恋愛を調査。</span></p>
+        <p><span class="story-text sub">インタビューを受けた女性に野球拳をしてもらい、負けたらエッな罰ゲームが…。</span></p>
+        <p><span class="story-text sub">今回は大学一年生Hカップのましろちゃん。</span></p>
+      </article>
+      <article class="story-block tone-blue">
+        <img src="sozai/シーケンス 01.00_00_01_06.静止画001.jpg" alt="">
+        <p><span class="story-text">流れックスって知ってますか？</span></p>
+      </article>
+      <article class="story-block tone-magenta">
+        <img src="sozai/シーケンス 01.00_00_04_21.静止画002.jpg" alt="">
+        <p><span class="story-text">最近ありましたw</span></p>
+      </article>
+      <article class="story-block tone-emerald">
+        <img src="sozai/シーケンス 01.00_00_07_11.静止画003.jpg" alt="">
+        <p><span class="story-text">個人経営のちっちゃい居酒屋で</span></p>
+      </article>
+      <article class="story-block tone-violet">
+        <img src="sozai/シーケンス 01.00_00_09_07.静止画004.jpg" alt="">
+        <p><span class="story-text">ミスばっかしちゃってて</span></p>
+      </article>
+      <article class="story-block tone-amber">
+        <img src="sozai/シーケンス 01.00_00_12_01.静止画005.jpg" alt="">
+        <p><span class="story-text highlight-red">店長が怖い感じで</span></p>
+      </article>
+      <article class="story-block tone-cyan">
+        <img src="sozai/シーケンス 01.00_00_13_08.静止画006.jpg" alt="">
+        <p><span class="story-text">次やったら知らないからな</span></p>
+      </article>
+      <article class="story-block tone-blue">
+        <img src="sozai/シーケンス 01.00_00_19_02.静止画007.jpg" alt="">
+        <p><span class="story-text">結局ミスしちゃって</span></p>
+      </article>
+      <article class="story-block tone-magenta">
+        <img src="sozai/シーケンス 01.00_00_20_09.静止画008.jpg" alt="">
+        <p><span class="story-text">居酒屋の隣に（店長の）家があって</span></p>
+      </article>
+      <article class="story-block tone-emerald">
+        <img src="sozai/シーケンス 01.00_00_24_11.静止画009.jpg" alt="">
+        <p><span class="story-text">家の中に事務所がある</span></p>
+      </article>
+      <article class="story-block tone-violet">
+        <img src="sozai/シーケンス 01.00_00_26_14.静止画010.jpg" alt="">
+        <p><span class="story-text">一緒になってるタイプ</span></p>
+      </article>
+      <article class="story-block tone-amber">
+        <img src="sozai/シーケンス 01.00_00_27_08.静止画011.jpg" alt="">
+        <p><span class="story-text">ちょっと事務所こい</span></p>
+      </article>
+      <article class="story-block tone-cyan">
+        <img src="sozai/シーケンス 01.00_00_30_20.静止画012.jpg" alt="">
+        <p><span class="story-text">泣きながら</span></p>
+      </article>
+      <article class="story-block tone-blue">
+        <img src="sozai/シーケンス 01.00_00_32_18.静止画013.jpg" alt="">
+        <p><span class="story-text">最後にチャンスください</span></p>
+      </article>
+      <article class="story-block tone-magenta">
+        <img src="sozai/シーケンス 01.00_00_36_01.静止画014.jpg" alt="">
+        <p><span class="story-text">店長が感動してくれて</span></p>
+      </article>
+      <article class="story-block tone-emerald">
+        <img src="sozai/シーケンス 01.00_00_37_21.静止画015.jpg" alt="">
+        <p><span class="story-text">涙流しちゃってたけど</span></p>
+      </article>
+      <article class="story-block tone-violet">
+        <img src="sozai/シーケンス 01.00_00_39_12.静止画016.jpg" alt="">
+        <p><span class="story-text">手で拭ってくれて</span></p>
+      </article>
+      <article class="story-block tone-amber">
+        <img src="sozai/シーケンス 01.00_00_41_20.静止画017.jpg" alt="">
+        <p><span class="story-text">ん？！</span></p>
+      </article>
+      <article class="story-block tone-cyan">
+        <img src="sozai/シーケンス 01.00_00_44_18.静止画018.jpg" alt="">
+        <p><span class="story-text highlight-yellow">頭ポンポンされて</span></p>
+      </article>
+      <article class="story-block tone-blue">
+        <img src="sozai/シーケンス 01.00_00_47_04.静止画019.jpg" alt="">
+        <p><span class="story-text">意外とお前も</span></p>
+      </article>
+      <article class="story-block tone-magenta">
+        <img src="sozai/シーケンス 01.00_00_49_04.静止画020.jpg" alt="">
+        <p><span class="story-text">可愛いとこあるんだな</span></p>
+      </article>
+      <article class="story-block tone-emerald">
+        <img src="sozai/シーケンス 01.00_00_50_17.静止画021.jpg" alt="">
+        <p><span class="story-text">そしたらそのまま</span></p>
+      </article>
+      <article class="story-block tone-violet">
+        <img src="sozai/シーケンス 01.00_00_52_18.静止画022.jpg" alt="">
+        <p><span class="story-text highlight-red">キスされちゃって</span></p>
+      </article>
+      <article class="story-block tone-amber">
+        <img src="sozai/シーケンス 01.00_00_55_13.静止画023.jpg" alt="">
+        <p><span class="story-text highlight-red">奥さんとかいた？</span></p>
+      </article>
+      <article class="story-block tone-cyan">
+        <img src="sozai/シーケンス 01.00_00_56_20.静止画024.jpg" alt="">
+        <p><span class="story-text">いました</span></p>
+      </article>
+      <article class="story-block tone-blue">
+        <img src="sozai/シーケンス 01.00_00_58_21.静止画025.jpg" alt="">
+        <p><span class="story-text">そのまま流れで</span></p>
+      </article>
+      <article class="story-block tone-magenta">
+        <img src="sozai/シーケンス 01.00_01_01_22.静止画026.jpg" alt="">
+        <p><span class="story-text highlight-red">シチャいました♡</span></p>
+      </article>
+      <article class="story-block tone-emerald">
+        <img src="sozai/シーケンス 01.00_01_03_09.静止画027.jpg" alt="">
+        <p><span class="story-text highlight-red">シチャいました♡</span></p>
+      </article>
+      <article class="story-block tone-violet">
+        <img src="sozai/シーケンス 01.00_01_04_01.静止画028.jpg" alt="">
+        <p><span class="story-text">奥さんいるのに！？</span></p>
+      </article>
+      <article class="story-block tone-amber">
+        <img src="sozai/シーケンス 01.00_01_07_10.静止画029.jpg" alt="">
+        <p><span class="story-text highlight-red">バレたらやばい</span></p>
+      </article>
+      <article class="story-block tone-cyan">
+        <img src="sozai/シーケンス 01.00_01_08_18.静止画030.jpg" alt="">
+        <p><span class="story-text">前回 ましろん野球拳負けた</span></p>
+      </article>
+      <article class="story-block tone-blue">
+        <img src="sozai/シーケンス 01.00_01_11_00.静止画031.jpg" alt="">
+        <p><span class="story-text">リベンジ企画やってて</span></p>
+      </article>
+      <article class="story-block tone-magenta">
+        <img src="sozai/シーケンス 01.00_01_12_06.静止画032.jpg" alt="">
+        <p><span class="story-text">バイト辞めたし</span></p>
+      </article>
+      <article class="story-block tone-emerald">
+        <img src="sozai/シーケンス 01.00_01_13_17.静止画033.jpg" alt="">
+        <p><span class="story-text">いいかもしれない</span></p>
+      </article>
+      <article class="story-block tone-violet">
+        <img src="sozai/シーケンス 01.00_01_16_04.静止画034.jpg" alt="">
+        <p><span class="story-text highlight-yellow">交渉成功！！</span></p>
+      </article>
+      <article class="story-block tone-amber">
+        <img src="sozai/シーケンス 01.00_01_17_13.静止画035.jpg" alt="">
+        <p><span class="story-text big highlight-yellow">続きは固定プロフから</span></p>
+      </article>
+      <article class="story-block tone-magenta no-image">
+        <p><span class="story-text big highlight-yellow">この後続きは…。</span></p>
+        <div class="cta-buttons">
+          <a class="cta-button primary" href="https://myfans.jp/nanpa__tokyo" target="_blank" rel="noopener noreferrer">続きを見る</a>
+          <a class="cta-button line" href="https://line.me/" target="_blank" rel="noopener noreferrer">LINEでお得情報</a>
+        </div>
+        <div class="viewer-feedback">
+          <h3>視聴者からの感想を紹介</h3>
+          <ul>
+            <li><span class="bubble">渋谷のリアル、めっちゃ伝わってきた！夜の空気感最高。</span></li>
+            <li><span class="bubble">ましろちゃんの緊張感とドキドキ、こっちまで伝染した…！</span></li>
+            <li><span class="bubble">罰ゲームの流れがエモすぎて何度も巻き戻した。</span></li>
+            <li><span class="bubble">ナイトシーンの映像が映画みたいで惹き込まれた。</span></li>
+            <li><span class="bubble">次の突撃も期待！このシリーズ外せない。</span></li>
+          </ul>
+        </div>
+        <div class="cta-buttons">
+          <a class="cta-button primary" href="https://myfans.jp/nanpa__tokyo" target="_blank" rel="noopener noreferrer">続きを見る</a>
+          <a class="cta-button line" href="https://line.me/" target="_blank" rel="noopener noreferrer">LINEでお得情報</a>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

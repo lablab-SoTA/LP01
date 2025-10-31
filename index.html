@@ -48,6 +48,28 @@
     color:var(--muted);
     line-height:1.8;
    }
+   .section{
+    margin-bottom:42px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+   }
+   h2.section-title{
+    font-size:clamp(1.45rem,3.4vw,1.8rem);
+    font-weight:700;
+    letter-spacing:.12em;
+    color:var(--accent-2);
+    text-transform:uppercase;
+   }
+   h2.section-title span{
+    display:block;
+    margin-top:6px;
+    font-size:.95rem;
+    font-weight:600;
+    letter-spacing:.05em;
+    color:var(--muted);
+    text-transform:none;
+   }
    .grid{
     display:grid;
     gap:20px;
@@ -113,6 +135,7 @@
    }
    @media (max-width:540px){
     main{padding:40px 24px}
+    .section{gap:18px;margin-bottom:34px}
     .grid{gap:16px}
     a.card{padding:24px 18px}
    }
@@ -122,24 +145,41 @@
   <main>
    <header>
     <h1>LPバリエーション・ポータル</h1>
-    <p class="lead">下記のボタンから、参考元LPおよびFOMO訴求バリエーション（A/B/C案）を確認できます。</p>
+    <p class="lead">制作済みのLP・OCR原稿ページを一覧化しました。GitHub Pages 上でそのままプレビューしながら比較できます。</p>
    </header>
-   <div class="grid">
-    <a class="card" href="reference.html" target="_blank" rel="noopener">
-     <span>リファレンス<br/><small>元LPクローン（診断アンケート）</small></span>
-    </a>
-    <a class="card" href="lp-variant-a.html" target="_blank" rel="noopener">
-     <span>A案｜段階値上げ<br/><small>ステージ制価格でFOMOを訴求</small></span>
-    </a>
-    <a class="card" href="lp-variant-b.html" target="_blank" rel="noopener">
-     <span>B案｜先着特典<br/><small>残枠カウンタと特典で即決促進</small></span>
-    </a>
-    <a class="card" href="lp-variant-c.html" target="_blank" rel="noopener">
-     <span>C案｜72時間ドロップ<br/><small>販売期間限定と視聴期限で締切訴求</small></span>
-    </a>
-   </div>
+   <section class="section">
+    <h2 class="section-title">LP VARIATIONS<span>FOMO訴求向けの3案＋リファレンス</span></h2>
+    <div class="grid">
+     <a class="card" href="reference.html" target="_blank" rel="noopener">
+      <span>リファレンス<br/><small>元LPクローン（診断アンケート）</small></span>
+     </a>
+     <a class="card" href="lp-variant-a.html" target="_blank" rel="noopener">
+      <span>A案｜段階値上げ<br/><small>ステージ制価格でFOMOを訴求</small></span>
+     </a>
+     <a class="card" href="lp-variant-b.html" target="_blank" rel="noopener">
+      <span>B案｜先着特典<br/><small>残枠カウンタと特典で即決促進</small></span>
+     </a>
+     <a class="card" href="lp-variant-c.html" target="_blank" rel="noopener">
+      <span>C案｜72時間ドロップ<br/><small>販売期間限定と視聴期限で締切訴求</small></span>
+     </a>
+    </div>
+   </section>
+   <section class="section">
+    <h2 class="section-title">OCR STORY PAGES<span>動画キャプチャ＋テキスト起こしの3バリエーション</span></h2>
+    <div class="grid">
+     <a class="card" href="sozai_ocr.html" target="_blank" rel="noopener">
+      <span>Night City Core<br/><small>ナイトクラブ調のダークテーマ</small></span>
+     </a>
+     <a class="card" href="sozai_ocr_breeze.html" target="_blank" rel="noopener">
+      <span>Breeze Variation<br/><small>昼の街を意識したライトテーマ</small></span>
+     </a>
+     <a class="card" href="sozai_ocr_archive.html" target="_blank" rel="noopener">
+      <span>Story Archive<br/><small>白背景のテキストアーカイブ版</small></span>
+     </a>
+    </div>
+   </section>
    <footer>
-    <p>必要に応じて各LPの文言や数値を実運用値へ差し替えてご活用ください。</p>
+    <p>各ページは GitHub Pages に配置された同一ディレクトリから参照可能です。ブラウザでの表示確認や AB テストの比較にご活用ください。</p>
    </footer>
   </main>
  </body>
